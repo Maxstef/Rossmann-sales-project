@@ -1,0 +1,25 @@
+Column,Type,Min,Max,Unique_Values
+Date,date,2013-01-31 00:00:00,2015-07-31 00:00:00,
+Promo,boolean,,,"[0, 1]"
+CompetitionDistance,numeric,20.0,75860.0,
+StateHoliday,categorical,,,"['0', 'a', 'b', 'c']"
+SchoolHoliday,boolean,,,"[0, 1]"
+StoreType,categorical,,,"['c', 'a', 'd', 'b']"
+Assortment,categorical,,,"['a', 'c', 'b']"
+Promo2,boolean,,,"[0, 1]"
+Promo2SinceWeek,numeric,0.0,50.0,
+Promo2SinceYear,numeric,0.0,2015.0,
+PromoInterval,categorical,,,"[nan, 'Jan,Apr,Jul,Oct', 'Feb,May,Aug,Nov', 'Mar,Jun,Sept,Dec']"
+CompetitionOpenSinceMonth,numeric,0.0,12.0,
+CompetitionOpenSinceYear,numeric,0.0,2015.0,
+DaysAfterHoliday,numeric,0,7,
+DaysBeforeHoliday,numeric,0,7,
+Sales_Lag1,numeric,0.0,41551.0,
+Sales_Lag2,numeric,0.0,41551.0,
+Sales_Lag3,numeric,0.0,41551.0,
+Sales_Lag7,numeric,0.0,41551.0,
+Sales_Lag14,numeric,0.0,38722.0,
+Sales_Lag30,numeric,0.0,41551.0,
+Customers_Lag1,numeric,0.0,5494.0,
+Customers_Lag7,numeric,0.0,5494.0,
+SalesPerCustomer_Lag1,numeric,0.0,64.95785440613027,
