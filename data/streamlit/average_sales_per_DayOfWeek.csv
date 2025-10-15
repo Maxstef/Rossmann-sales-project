@@ -1,8 +1,8 @@
-DayOfWeek,Average_Sales
-Monday,8253.65
-Tuesday,7112.1
-Wednesday,6754.52
-Thursday,6790.73
-Friday,7092.9
-Saturday,5890.45
-Sunday,8236.86
+DayOfWeek,Average_Sales,Total_Open_Days,Total_Days_With_Promo
+Monday,8236.63,101905,56119
+Tuesday,7063.32,106405,56275
+Wednesday,6697.33,102983,55111
+Thursday,6752.63,98542,53654
+Friday,7087.08,101865,53194
+Saturday,5845.51,106203,0
+Sunday,8096.82,2695,0
