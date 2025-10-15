@@ -1,7 +1,7 @@
 import streamlit as st
 from src.sales_statistics import get_avg_sales_per_col_df, get_st_stats_column_config
 from src.predict_inputs_view import render_daily_predict_form_features
-# from src.predict_helper import predict_daily todo
+from src.predict_helper import predict_daily_from_user_input
 
 # -------------------------------
 # Page configuration
@@ -80,15 +80,35 @@ st.markdown("---")
 # -------------------------------
 #  Predict
 # -------------------------------
-st.header("Daily Sales Prediction")
+st.header("📊 Daily Sales Prediction")
 
+# Render dynamic user input form based on prepared metadata
 user_input = render_daily_predict_form_features()
 
-if st.button('Predict Sales'):
-    st.markdown("### User Data (JSON)")
-    st.json(user_input)
+# # Show user input in a collapsible section for clarity
+# with st.expander("Show Entered Data"):
+#     st.write("You entered the following values:")
+#     st.json(user_input)
 
-    # todo
-    # prediction = predict_daily()
-    # st.markdown(prediction)
+# Predict button
+if st.button('Predict Sales'):
+    # Call prediction function with user input
+    prediction = predict_daily_from_user_input(user_input)
+    
+    # Display prediction in a highlighted markdown block
+    st.markdown(
+        f"""
+        ### 🚀 Predicted Sales
+        Based on your input, the expected sales for the selected date is:  
+
+        **💰 {prediction:.2f}**
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Optional: Add interpretation or next steps
+    st.info(
+        "Note: This prediction is based on historical patterns and store features. "
+        "It represents the expected sales when the store is open."
+    )
 
