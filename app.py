@@ -1,5 +1,7 @@
 import streamlit as st
 from src.sales_statistics import get_avg_sales_per_col_df, get_st_stats_column_config
+from src.predict_inputs_view import render_daily_predict_form_features
+# from src.predict_helper import predict_daily todo
 
 # -------------------------------
 # Page configuration
@@ -80,4 +82,13 @@ st.markdown("---")
 # -------------------------------
 st.header("Daily Sales Prediction")
 
-# TODO 
+user_input = render_daily_predict_form_features()
+
+if st.button('Predict Sales'):
+    st.markdown("### User Data (JSON)")
+    st.json(user_input)
+
+    # todo
+    # prediction = predict_daily()
+    # st.markdown(prediction)
+
