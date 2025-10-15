@@ -23,9 +23,9 @@ This project uses the **Rossmann Store Sales** dataset from Kaggle, with several
 
 The preprocessed dataset includes:
 - Date-based features (`Year`, `Month`, `WeekOfYear`, `IsWeekend`, etc.)
-- Competition-related features (`CompetitionDistance`, `CompetitionMonthsOpen`, etc.)
+- Competition-related features (`CompetitionDistanceCategory`, `CompetitionMonthsOpen`, etc.)
 - Promotion-related features (`Promo2Weeks`, `IsPromoMonth`, etc.)
-- Additional calendar and store-level attributes
+- Historycal related features (`Sales_Lag1`, `Sales_Lag7`, `Customers_Lag1`, etc.)
 
 ---
 
