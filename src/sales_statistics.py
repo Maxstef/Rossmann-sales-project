@@ -1,13 +1,38 @@
 import pandas as pd
 import streamlit as st
 
-relative_filepath = './data/streamlit/'
+# -------------------------------
+# Global variables
+# -------------------------------
+relative_filepath = './data/streamlit/'  # Base path for CSV files
 
-def get_col_stats_filename(col):
-    filename = 'average_sales_per_' + col + '.csv'
+# -------------------------------
+# File handling
+# -------------------------------
+def get_col_stats_filename(col: str) -> str:
+    """
+    Generates the filename for average sales statistics of a given column.
+
+    Parameters:
+        col (str): Column name to generate statistics for (e.g., 'Month', 'DayOfWeek').
+
+    Returns:
+        str: Full filename of the CSV file storing average sales statistics.
+    """
+    filename = f'average_sales_per_{col}.csv'
     return filename
 
-def safe_read_csv(file_path):
+
+def safe_read_csv(file_path: str) -> pd.DataFrame | None:
+    """
+    Safely reads a CSV file and handles common file errors.
+
+    Parameters:
+        file_path (str): Full path to the CSV file.
+
+    Returns:
+        pd.DataFrame | None: Returns DataFrame if read successfully, otherwise None.
+    """
     try:
         df = pd.read_csv(file_path)
         return df
@@ -21,24 +46,50 @@ def safe_read_csv(file_path):
         print(f"Error reading {file_path}: {e}")
         return None
 
-def get_avg_sales_per_col_df(col):
+
+def get_avg_sales_per_col_df(col: str) -> pd.DataFrame | None:
+    """
+    Reads the average sales CSV for a given column (Month or DayOfWeek).
+
+    Parameters:
+        col (str): Column name for which to get average sales ('Month' or 'DayOfWeek').
+
+    Returns:
+        pd.DataFrame | None: DataFrame with average sales or None if file not found.
+    """
     full_filename = relative_filepath + get_col_stats_filename(col)
     return safe_read_csv(full_filename)
 
+# -------------------------------
+# Streamlit column configuration
+# -------------------------------
+def get_st_stats_column_config() -> dict:
+    """
+    Returns a Streamlit column configuration dictionary for displaying
+    average sales statistics with proper formatting and help tooltips.
 
-def get_st_stats_column_config():
+    Columns include:
+        - Month: Full month name
+        - DayOfWeek: Full weekday name
+        - Average_Sales: Average daily sales (formatted to 2 decimals)
+        - Total_Open_Days: Total days when store was open
+        - Total_Days_With_Promo: Total days with active promotions
+
+    Returns:
+        dict: Mapping of column names to Streamlit column_config objects.
+    """
     return {
         "Month": st.column_config.TextColumn(
             "Month Name",
-            help="Full month name"
+            help="Full month name (January, February, ...)"
         ),
         "DayOfWeek": st.column_config.TextColumn(
             "Day Name",
-            help="Full weekday name"
+            help="Full weekday name (Monday, Tuesday, ...)"
         ),
         "Average_Sales": st.column_config.NumberColumn(
             "💰 Average Sales",
-            help="Average daily sales when store was open",
+            help="Average daily sales when the store was open",
             format="%.2f"
         ),
         "Total_Open_Days": st.column_config.NumberColumn(
